@@ -1,0 +1,9 @@
+<div class="shipment-list">
+  @for (shipment of shipments(); track shipment.id) {
+    <div class="shipment-card">
+      <div class="shipment-id">{{ shipment.id }}</div>
+      <div class="shipment-status">{{ shipment.title }}</div>
+      <div class="shipment-origin">{{ shipment.body }}</div>
+    </div>
+  }
+</div>

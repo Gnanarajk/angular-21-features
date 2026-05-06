@@ -1,0 +1,7 @@
+<p>user-detail works!</p>
+@if (user(); as u) {
+  <h2>{{ u.firstName }} {{ u.lastName }}</h2>
+  <p>Role: {{ u.role }}</p>
+} @else {
+  <p>Loading user details...</p>
+}

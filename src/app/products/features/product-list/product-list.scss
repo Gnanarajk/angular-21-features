@@ -1,0 +1,17 @@
+.viewport {
+  height: 400px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.product-item {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+.product-id {
+  font-weight: bold;
+}
+.product-name {
+  font-size: 14px;
+}

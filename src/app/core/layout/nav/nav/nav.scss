@@ -1,0 +1,50 @@
+.navbar {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 shadow-lg;
+
+  .navbar-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply flex items-center justify-between h-16;
+  }
+
+  .navbar-logo {
+    @apply flex items-center space-x-2 text-white text-2xl font-bold;
+
+    &:hover {
+      @apply text-blue-100 transition-colors duration-200;
+    }
+  }
+
+  .navbar-menu {
+    @apply hidden md:flex items-center space-x-1;
+  }
+
+  .navbar-link {
+    @apply text-white px-3 py-2 rounded-md text-sm font-medium;
+    @apply hover:bg-blue-800 transition-colors duration-200;
+
+    &.active {
+      @apply bg-blue-800;
+    }
+  }
+
+  .navbar-toggle {
+    @apply md:hidden text-white;
+
+    &:hover {
+      @apply text-blue-100;
+    }
+  }
+
+  .navbar-mobile-menu {
+    @apply hidden md:hidden absolute top-16 left-0 right-0 bg-blue-700 shadow-lg;
+
+    &.open {
+      @apply block;
+    }
+  }
+
+  .navbar-mobile-link {
+    @apply block text-white px-4 py-2 text-sm font-medium;
+    @apply hover:bg-blue-800 transition-colors duration-200;
+  }
+}

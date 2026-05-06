@@ -1,0 +1,22 @@
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.user-card .user-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.user-card .user-role {
+  font-size: 14px;
+  color: #666;
+}
+.user-card .user-gender {
+  font-size: 14px;
+  color: #666;
+  margin-left: auto;
+}

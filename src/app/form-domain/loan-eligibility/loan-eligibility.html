@@ -1,0 +1,13 @@
+<h1>Loan Eligibilitu</h1>
+
+<div [formGroup]="loanForm">
+  <input type="number" formControlName="monthlyIncome" />
+  <input type="number" formControlName="currentDebt" />
+</div>
+<div>Risk Level is {{ riskLevel() }}</div>
+
+<div>Max Eligibility is {{ maxEligibility() }}</div>
+
+@if (loanForm.hasError('moreDebt')) {
+  <div class="error-msg">Warning: Your debt is too high compared to your income for this loan.</div>
+}

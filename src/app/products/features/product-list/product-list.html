@@ -1,0 +1,20 @@
+<input
+  type="text"
+  placeholder="Search products..."
+  class="search-input"
+  (input)="onSearch($event.target.value)"
+/>
+
+<button *hasPermission="'admin'" mat-raised-button color="warn">DELETE ORDER</button>
+
+<cdk-virtual-scroll-viewport
+  itemSize="50"
+  class="viewport"
+  (scrolledIndexChange)="onScroll($event)"
+>
+  <div *cdkVirtualFor="let product of filteredProducts(); trackBy: trackById" class="product-item">
+    <div class="product-id">Product ID: {{ product.id }}</div>
+    <div class="product-name">Name: {{ product.title }}</div>
+    <div class="product-price">Price: {{ product.price | currency }}</div>
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,17 @@
+<div [formGroup]="form">
+  <input type="checkbox" id="percent-calc" name="percent-calc" formControlName="checkVal" />
+
+  @if (form.get('checkVal')?.value) {
+    <input type="number" formControlName="alum" placeholder="%Alum" />
+    <input type="number" formControlName="copper" placeholder="%Copper" />
+    <input type="number" formControlName="iron" placeholder="%Iron" />
+  }
+
+  @if (form.hasError('totalExceeds')) {
+    <div id="totalPercentError" class="validation-message">Total must not exceed 100</div>
+  }
+</div>
+
+<div>
+  {{ signalForm() | json }}
+</div>

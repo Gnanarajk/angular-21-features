@@ -1,0 +1,10 @@
+<h1>Users</h1>
+@for (user of users$(); track user.id) {
+  <div class="user-card">
+    <h3 class="user-name">
+      <a routerLink="/users/{{ user.id }}">{{ user.firstName }} {{ user.lastName }}</a>
+    </h3>
+    <p class="user-role">Role: {{ user.role }}</p>
+    <p class="user-gender">Gender: {{ user.gender }}</p>
+  </div>
+}

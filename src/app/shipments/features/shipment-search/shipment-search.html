@@ -1,0 +1,12 @@
+<input
+  type="text"
+  placeholder="Search shipments..."
+  class="search-input"
+  (input)="searchQuery.set($event.target.value)"
+/>
+
+@if (shipments() && shipments().length > 0) {
+  <app-shipment-list [shipments]="shipments()"></app-shipment-list>
+} @else {
+  <p>No shipments found</p>
+}

@@ -1,0 +1,11 @@
+@if (isLoading()) {
+  <div class="loading">Loading...</div>
+} @else {
+  <cdk-virtual-scroll-viewport itemSize="56" style="height: 400px">
+    <div *cdkVirtualFor="let order of orders(); trackBy: trackById" class="order-item">
+      <div class="order-id">{{ order.id }}</div>
+      <div class="order-customer">User Id: {{ order.userId }}</div>
+      <div class="order-date">Date: {{ order.total | currency }}</div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+}

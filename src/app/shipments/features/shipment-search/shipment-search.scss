@@ -1,0 +1,17 @@
+.shipment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.shipment-card {
+  @apply bg-white rounded-lg shadow-md p-4;
+}
+.shipment-id {
+  @apply text-sm font-semibold text-gray-500;
+}
+.shipment-status {
+  @apply text-lg font-bold text-gray-800;
+}
+.shipment-origin {
+  @apply text-gray-600;
+}
