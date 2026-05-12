@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { adminGuard } from './core/auth/guards/admin-guard';
-import { TempConvertor } from './form-domain/temp-convertor/temp-convertor';
-import { LoanEligibility } from './form-domain/loan-eligibility/loan-eligibility';
 
 export const routes: Routes = [
   {
@@ -35,10 +33,12 @@ export const routes: Routes = [
   },
   {
     path: 'temp-convertor',
-    component: TempConvertor,
+    loadComponent: () =>
+      import('./form-domain/temp-convertor/temp-convertor').then((m) => m.TempConvertor),
   },
   {
     path: 'loan-eligibility',
-    component: LoanEligibility,
+    loadComponent: () =>
+      import('./form-domain/loan-eligibility/loan-eligibility').then((m) => m.LoanEligibility),
   },
 ];

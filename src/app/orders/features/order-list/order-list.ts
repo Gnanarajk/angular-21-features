@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Order } from '../../models/order.model';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { OrderStore } from '../../data-access/order-store';
 import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-order-list',
   standalone: true,
-  imports: [CommonModule, CdkVirtualScrollViewport, ScrollingModule],
+  imports: [CommonModule, CdkVirtualScrollViewport, ScrollingModule, MatSlideToggle],
   templateUrl: './order-list.html',
   styleUrl: './order-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
