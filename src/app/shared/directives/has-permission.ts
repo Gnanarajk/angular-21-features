@@ -13,7 +13,7 @@ export class HasPermission {
 
   constructor() {
     effect(() => {
-      const userRole = this.authService.getUserRole();
+      const userRole = this.authService.userRole();
 
       if (userRole === this.hasPermission) {
         this.viewContainer.createEmbeddedView(this.templateRef);
