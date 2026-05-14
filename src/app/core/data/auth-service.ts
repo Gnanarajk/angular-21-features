@@ -48,14 +48,14 @@ export class AuthService {
             image: response.image,
             role: response.role,
           });
-          // Persist refresh token in a cookie so it survives page reloads
           this.setRefreshCookie(response.refreshToken);
         }),
       );
   }
 
   // Called by APP_INITIALIZER on every page load.
-  // Reads the refresh token from the cookie and silently restores the session.
+  // Reads the refresh token from the cookie we set after login and sends it
+  // in the request body — dummyjson does not set server-side cookies.
   // Always resolves so the app bootstraps regardless of outcome.
   tryRefreshOnInit(): Promise<void> {
     const refreshToken = this.getRefreshCookie();
@@ -71,12 +71,12 @@ export class AuthService {
         .pipe(
           tap((response) => {
             this._token.set(response.accessToken);
-            this.setRefreshCookie(response.refreshToken); // rotate the cookie
+            this.setRefreshCookie(response.refreshToken);
           }),
           switchMap(() => this.http.get<CurrentUser>(this.meUrl)),
           tap((user) => this._currentUser.set(user)),
           catchError(() => {
-            this.clearRefreshCookie(); // stale or invalid — clear it
+            this.clearRefreshCookie();
             return of(null);
           }),
         ),
@@ -89,8 +89,6 @@ export class AuthService {
     this.clearRefreshCookie();
     this.router.navigate(['/login']);
   }
-
-  // ── cookie helpers ────────────────────────────────────────────────────────
 
   private setRefreshCookie(token: string): void {
     const maxAge = 7 * 24 * 60 * 60; // 7 days
