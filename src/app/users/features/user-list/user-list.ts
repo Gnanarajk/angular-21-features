@@ -1,17 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectAllUsers, selectAdminUsers, UsersActions } from '../../data/users.store';
-import { HasPermission } from '../../../has-permission';
+import { selectAllUsers, UsersActions } from '../../data/users.store';
+import { HasPermission } from '../../../shared/directives/has-permission';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/data/auth-service';
 
 @Component({
   selector: 'app-user-list',
-  imports: [RouterLink],
+  imports: [RouterLink, HasPermission],
   templateUrl: './user-list.html',
   styleUrl: './user-list.scss',
 })
 export class UserList {
   private store = inject(Store);
+  protected authService = inject(AuthService);
+  typeofRole = () => typeof this.authService.userRole();
   users$ = this.store.selectSignal(selectAllUsers);
 
   ngOnInit() {

@@ -1,0 +1,35 @@
+<div class="login-wrapper">
+  <form class="login-card" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2 class="login-title">Sign in</h2>
+
+    <div class="field">
+      <label for="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        formControlName="username"
+        autocomplete="username"
+        placeholder="e.g. emilys"
+      />
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        autocomplete="current-password"
+        placeholder="••••••••"
+      />
+    </div>
+
+    @if (errorMessage) {
+      <p class="error-msg">{{ errorMessage }}</p>
+    }
+
+    <button class="submit-btn" type="submit" [disabled]="loginForm.invalid || loading">
+      {{ loading ? 'Signing in…' : 'Sign in' }}
+    </button>
+  </form>
+</div>

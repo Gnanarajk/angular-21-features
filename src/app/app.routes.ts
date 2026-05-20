@@ -1,15 +1,21 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/auth/guards/auth-guard';
 import { adminGuard } from './core/auth/guards/admin-guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'loan-eligibility',
+    redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./auth/login/login').then((m) => m.Login),
   },
   {
     path: 'orders',
     loadComponent: () => import('./orders/features/order-list/order-list').then((m) => m.OrderList),
+    canActivate: [authGuard],
   },
   {
     path: 'products',
@@ -21,10 +27,12 @@ export const routes: Routes = [
     path: 'shipments',
     loadComponent: () =>
       import('./shipments/features/shipment-search/shipment-search').then((m) => m.ShipmentSearch),
+    canActivate: [authGuard],
   },
   {
     path: 'users',
     loadChildren: () => import('./users/users.routes').then((m) => m.usersRoute),
+    canActivate: [authGuard],
   },
   {
     path: 'percent-calc',

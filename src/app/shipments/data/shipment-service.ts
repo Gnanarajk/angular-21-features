@@ -13,7 +13,6 @@ export interface Shipment {
   providedIn: 'root',
 })
 export class ShipmentService {
-  private _shipments = [];
   private http = inject(HttpClient);
 
   getShipments(query: string = '') {
@@ -26,5 +25,9 @@ export class ShipmentService {
     return this.http
       .get('https://dummyjson.com/posts/search', { params })
       .pipe(map((response: any) => response.posts as Shipment[]));
+  }
+
+  deleteShipment(id: number) {
+    return this.http.delete(`https://dummyjson.com/posts/${id}`);
   }
 }
