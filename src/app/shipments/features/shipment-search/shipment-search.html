@@ -1,12 +1,15 @@
 <input
   type="text"
+  [value]="store.query()"
+  (input)="store.setQuery($any($event.target).value)"
   placeholder="Search shipments..."
   class="search-input"
-  (input)="searchQuery.set($event.target.value)"
 />
 
-@if (shipments() && shipments().length > 0) {
-  <app-shipment-list [shipments]="shipments()"></app-shipment-list>
-} @else {
-  <p>No shipments found</p>
-}
+<app-shipment-list
+  [shipments]="store.displayShipments()"
+  [deletingIds]="deletingIds()"
+  [isLoading]="store.isBusy()"
+  [isSearchMode]="store.isSearchMode()"
+  (deleteRequest)="onDelete($event)"
+/>

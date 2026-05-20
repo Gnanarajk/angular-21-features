@@ -4,11 +4,10 @@ import { selectAllUsers, UsersActions } from '../../data/users.store';
 import { HasPermission } from '../../../shared/directives/has-permission';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/data/auth-service';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
-  imports: [RouterLink, HasPermission, JsonPipe],
+  imports: [RouterLink, HasPermission],
   templateUrl: './user-list.html',
   styleUrl: './user-list.scss',
 })
