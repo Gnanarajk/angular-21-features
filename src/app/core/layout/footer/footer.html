@@ -1,0 +1,48 @@
+<footer class="app-footer">
+
+  <!-- ── Top section: brand + quick-links ─────────────────── -->
+  <div class="footer-top">
+
+    <!-- Brand column -->
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <mat-icon>local_shipping</mat-icon>
+        <span>ClickShip</span>
+      </div>
+      <p class="footer-tagline">
+        Modern shipping management for modern teams.<br />
+        Built with Angular 21 &amp; Material Design.
+      </p>
+    </div>
+
+    <!-- Quick-links columns -->
+    <div class="footer-links">
+      <div class="footer-links-col">
+        <h4>App</h4>
+        <a routerLink="/shipments">Shipments</a>
+        <a routerLink="/orders">Orders</a>
+        <a routerLink="/products">Products</a>
+        <a routerLink="/users">Users</a>
+      </div>
+      <div class="footer-links-col">
+        <h4>Tools</h4>
+        <a routerLink="/percent-calc">Percent Calculator</a>
+        <a routerLink="/temp-convertor">Temp Converter</a>
+        <a routerLink="/loan-eligibility">Loan Eligibility</a>
+      </div>
+    </div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- ── Bottom bar: copyright ──────────────────────────────── -->
+  <div class="footer-bottom">
+    <span>&copy; {{ year }} ClickShip. All rights reserved.</span>
+    <span class="footer-tech-badge">
+      <mat-icon inline>code</mat-icon>
+      Angular 21 + NgRx + Tailwind
+    </span>
+  </div>
+
+</footer>

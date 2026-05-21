@@ -1,3 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+
+// mat.core() provides baseline styles required by all Material components
+// (ripple, elevation, focus indicators, etc.)
 @include mat.core();
+
+// Apply the M3 theme globally using the azure palette (blue family).
+// mat.theme() is the Angular Material v3 API — one call configures
+// color, typography and density for every component at once.
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+// Base resets — keep in sync with Tailwind's preflight when both are used
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #f8fafc; // slate-50 — subtle off-white page background
+}
+
+// Smooth anchor transitions used site-wide
+a {
+  transition: color 0.2s ease;
+}

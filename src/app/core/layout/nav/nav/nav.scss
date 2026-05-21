@@ -1,50 +1,112 @@
-.navbar {
-  @apply bg-gradient-to-r from-blue-600 to-blue-700 shadow-lg;
+.nav-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
-  .navbar-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-    @apply flex items-center justify-between h-16;
+  // ── Brand ────────────────────────────────────────────────
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover .brand-name {
+      opacity: 0.85;
+    }
   }
 
-  .navbar-logo {
-    @apply flex items-center space-x-2 text-white text-2xl font-bold;
+  .brand-icon {
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transition: opacity 0.15s;
+  }
+
+  // ── Spacer ───────────────────────────────────────────────
+  .nav-spacer {
+    flex: 1 1 auto;
+  }
+
+  // ── Desktop nav ──────────────────────────────────────────
+  .desktop-nav {
+    display: none;
+    align-items: center;
+    gap: 2px;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    // routerLinkActive adds this class when the route is active
+    &.nav-link-active {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+    }
 
     &:hover {
-      @apply text-blue-100 transition-colors duration-200;
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    mat-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
     }
   }
 
-  .navbar-menu {
-    @apply hidden md:flex items-center space-x-1;
+  // ── Action buttons ───────────────────────────────────────
+  .action-btn {
+    margin-left: 8px;
   }
 
-  .navbar-link {
-    @apply text-white px-3 py-2 rounded-md text-sm font-medium;
-    @apply hover:bg-blue-800 transition-colors duration-200;
+  // ── Mobile hamburger ─────────────────────────────────────
+  .mobile-menu-btn {
+    margin-left: 4px;
 
-    &.active {
-      @apply bg-blue-800;
+    @media (min-width: 768px) {
+      display: none;
     }
   }
+}
 
-  .navbar-toggle {
-    @apply md:hidden text-white;
+// ── User menu dropdown content ────────────────────────────
+.user-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  pointer-events: none; // header row is not clickable
 
-    &:hover {
-      @apply text-blue-100;
-    }
+  .user-menu-avatar {
+    font-size: 36px;
+    height: 36px;
+    width: 36px;
+    color: #64748b;
   }
 
-  .navbar-mobile-menu {
-    @apply hidden md:hidden absolute top-16 left-0 right-0 bg-blue-700 shadow-lg;
-
-    &.open {
-      @apply block;
-    }
-  }
-
-  .navbar-mobile-link {
-    @apply block text-white px-4 py-2 text-sm font-medium;
-    @apply hover:bg-blue-800 transition-colors duration-200;
+  .user-menu-label {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1e293b;
   }
 }

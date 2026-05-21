@@ -1,45 +1,112 @@
-<mat-toolbar class="bg-blue-600 text-white shadow-lg flex items-center px-6">
-  <!-- Brand Logo -->
-  <span class="text-xl font-bold tracking-tight cursor-pointer" routerLink="/"> ClickShip </span>
+<mat-toolbar class="nav-toolbar" color="primary">
 
-  <!-- Spacer to push menu to the right -->
-  <span class="flex-1"></span>
+  <!-- ── Brand Logo ───────────────────────────────────────── -->
+  <a routerLink="/" class="brand-logo" aria-label="ClickShip home">
+    <mat-icon class="brand-icon">local_shipping</mat-icon>
+    <span class="brand-name">ClickShip</span>
+  </a>
 
-  <!-- Plain Horizontal Menu -->
-  <nav class="flex items-center gap-2">
+  <!-- Flexible spacer pushes nav links + actions to the right -->
+  <span class="nav-spacer"></span>
+
+  <!-- ── Desktop Navigation Links (hidden on mobile) ─────── -->
+  <nav class="desktop-nav" aria-label="Main navigation">
     <a
       mat-button
       routerLink="/shipments"
-      routerLinkActive="bg-blue-700"
-      class="flex items-center gap-2 hover:bg-blue-500 transition"
+      routerLinkActive="nav-link-active"
+      class="nav-link"
     >
+      <mat-icon>local_shipping</mat-icon>
       <span>Shipments</span>
     </a>
 
     <a
       mat-button
       routerLink="/orders"
-      routerLinkActive="bg-blue-700"
-      class="flex items-center gap-2 hover:bg-blue-500 transition"
+      routerLinkActive="nav-link-active"
+      class="nav-link"
     >
+      <mat-icon>receipt_long</mat-icon>
       <span>Orders</span>
     </a>
 
     <a
       mat-button
       routerLink="/products"
-      routerLinkActive="bg-blue-700"
-      class="flex items-center gap-2 hover:bg-blue-500 transition"
+      routerLinkActive="nav-link-active"
+      class="nav-link"
     >
+      <mat-icon>inventory_2</mat-icon>
       <span>Products</span>
     </a>
+
     <a
       mat-button
       routerLink="/users"
-      routerLinkActive="bg-blue-700"
-      class="flex items-center hover:bg-blue-500 transition"
+      routerLinkActive="nav-link-active"
+      class="nav-link"
     >
+      <mat-icon>people</mat-icon>
+      <span>Users</span>
     </a>
-    <span>Users</span>
   </nav>
+
+  <!-- ── User Account Menu ────────────────────────────────── -->
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="userMenu"
+    matTooltip="Account"
+    class="action-btn"
+    aria-label="Open account menu"
+  >
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #userMenu="matMenu" xPosition="before">
+    <div class="user-menu-header">
+      <mat-icon class="user-menu-avatar">account_circle</mat-icon>
+      <p class="user-menu-label">My Account</p>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Sign Out</span>
+    </button>
+  </mat-menu>
+
+  <!-- ── Mobile Hamburger (visible only on small screens) ── -->
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="mobileNav"
+    class="mobile-menu-btn"
+    aria-label="Open navigation menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #mobileNav="matMenu" xPosition="before">
+    <a mat-menu-item routerLink="/shipments">
+      <mat-icon>local_shipping</mat-icon>
+      <span>Shipments</span>
+    </a>
+    <a mat-menu-item routerLink="/orders">
+      <mat-icon>receipt_long</mat-icon>
+      <span>Orders</span>
+    </a>
+    <a mat-menu-item routerLink="/products">
+      <mat-icon>inventory_2</mat-icon>
+      <span>Products</span>
+    </a>
+    <a mat-menu-item routerLink="/users">
+      <mat-icon>people</mat-icon>
+      <span>Users</span>
+    </a>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Sign Out</span>
+    </button>
+  </mat-menu>
+
 </mat-toolbar>
